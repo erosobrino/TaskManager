@@ -1,0 +1,27 @@
+﻿@page "/edit"
+@page "/edit/{id:guid}"
+
+@if (_todo is null || _todo.Id == Guid.Empty)
+{
+    <h1>Nueva tarea</h1>
+}
+else
+{
+    <h1>Editando tarea</h1>
+}
+<EditForm Model="@_todo" OnValidSubmit="@HandleValidSubmitAsync">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <p>Nombre</p>
+    <InputText @bind-Value="_todo.Name" />
+    <br />
+    <p>Descripción</p>
+    <InputText @bind-Value="_todo.Description" />
+    <br />
+    <p>Finalizada</p>
+    <InputCheckbox @bind-Value="_todo.Done" />
+    <br />
+
+    <button type="submit">Guardar</button>
+</EditForm>

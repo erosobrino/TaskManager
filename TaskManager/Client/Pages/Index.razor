@@ -1,0 +1,31 @@
+﻿@page "/"
+@inherits ComponentBase
+@using Microsoft.AspNetCore.Components.Web
+
+<h1>TaskManager</h1>
+
+<h2><a href="/edit">Añadir Tarea</a></h2>
+
+<br />
+
+<h3>Tareas pendientes</h3>
+@* Contenedor para las tareas pendientes *@
+<div class="container border-2">
+    <ul>
+        @foreach (var task in _pendingTasks)
+        {
+            <li>@task.Name - @task.Description <a href="/edit/@task.Id">Edit </a></li>
+        }
+    </ul>
+</div>
+
+<h3>Tareas finalizadas</h3>
+@* Contenedor para las tareas realizadas *@
+<div class="container border-2">
+    <ul>
+        @foreach (var task in _finishedTasks)
+        {
+            <li>@task.Name - @task.Description  <a href="/edit/@task.Id">Edit </a></li>
+        }
+    </ul>
+</div>
